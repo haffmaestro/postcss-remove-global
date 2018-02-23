@@ -1,0 +1,35 @@
+{
+  "name": "postcss-global-selector",
+  "version": "0.0.0",
+  "description": "PostCSS plugin to add or remove :global selectors",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "global"
+  ],
+  "author": "fanshenggang <fanshenggang@jd.com>",
+  "license": "MIT",
+  "repository": "princetoad/postcss-global-selector",
+  "bugs": {
+    "url": "https://github.com/princetoad/postcss-global-selector/issues"
+  },
+  "homepage": "https://github.com/princetoad/postcss-global-selector",
+  "dependencies": {
+    "postcss": "^6.0.16"
+  },
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-postcss": "^2.0.2",
+    "jest": "^21.0.0"
+  },
+  "scripts": {
+    "test": "jest && eslint *.js"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-postcss/es5",
+    "env": {
+      "jest": true
+    }
+  }
+}
