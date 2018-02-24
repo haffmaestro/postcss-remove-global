@@ -10,10 +10,6 @@ function run(input, output, opts) {
         });
 }
 
-/* Write tests here
-
-it('does something', () => {
-    return run('a{ }', 'a{ }', { });
+it('remove :global selector', () => {
+    return run(':global { a{ } }', 'a{ }', { });
 });
-
-*/
