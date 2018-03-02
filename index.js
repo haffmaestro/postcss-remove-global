@@ -1,13 +1,13 @@
-var postcss = require('postcss');
+const postcss = require('postcss');
 
-module.exports = postcss.plugin('postcss-global-selector', function (opts) {
-    opts = opts || {};
+const pluginName = 'postcss-global-selector';
 
-    // Work with options here
-
-    return function (root, result) {
-
-        // Transform CSS AST here
-
-    };
+module.exports = postcss.plugin(pluginName, () => (root) => {
+    root.walkRules(rule => {
+        if (rule.selector === ':global') {
+            console.log(':global selector found');
+            rule.parent.append(...rule.nodes);
+            rule.remove();
+        }
+    });
 });
