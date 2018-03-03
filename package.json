@@ -1,6 +1,6 @@
 {
   "name": "postcss-global-selector",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "PostCSS plugin to add or remove :global selectors",
   "keywords": [
     "postcss",
@@ -8,7 +8,7 @@
     "postcss-plugin",
     "global"
   ],
-  "author": "fanshenggang <fanshenggang@jd.com>",
+  "author": "fanshenggang <tom@tfan.org>",
   "license": "MIT",
   "repository": "princetoad/postcss-global-selector",
   "bugs": {

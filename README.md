@@ -7,15 +7,13 @@
 [ci]:      https://travis-ci.org/princetoad/postcss-global-selector
 
 ```css
-.foo {
-    /* Input example */
+:global {
+    a { }
 }
 ```
 
 ```css
-.foo {
-  /* Output example */
-}
+a { }
 ```
 
 ## Usage
