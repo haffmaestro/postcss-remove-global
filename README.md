@@ -6,7 +6,7 @@
 [ci-img]:  https://travis-ci.org/princetoad/postcss-remove-global.svg
 [ci]:      https://travis-ci.org/princetoad/postcss-remove-global
 
-## Examples
+## Support three cases
 
 1. Remove :global as a single selector
 ```css
@@ -39,8 +39,38 @@ a { }
 
 ## Usage
 
+### Use with PostCSS API
 ```js
-postcss([ require('postcss-remove-global') ])
-```
+const postcss = require('postcss')
+const removeGlobal = require('postcss-remove-global')
 
-See [PostCSS] docs for examples for your environment.
+const css = postcss()
+  .use(removeGlobal())
+  .process(':global { a {color: gray(85); background-color: gray(10%, .25)}}')
+  .css
+console.log('css = ', css)
+//= 'a {color: gray(85); background-color: gray(10%, .25)}'
+
+const css2 = postcss([removeGlobal])
+  .process('.root :global .text { margin: 0 6px; }')
+  .css
+console.log('css2 = ', css2)
+//= '.root .text { margin: 0 6px; }'
+
+const css3 = postcss([removeGlobal])
+  .process('@keyframes :global(zoomIn) { }')
+  .css
+console.log('css3 = ', css3)
+//= '@keyframes zoomIn { }'
+```
+Reference：https://github.com/princetoad/try-postcss/blob/master/src/Plugin/plugin-remove-global.js
+
+### Use gulp task runner
+```js
+gulp.task('global', () => {
+  return gulp.src('assets/*.css')
+    .pipe(postcss([removeGlobal]))
+    .pipe(gulp.dest('build/'))
+})
+```
+Reference：https://github.com/princetoad/try-postcss/blob/master/gulpfile.js
