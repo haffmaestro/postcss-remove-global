@@ -10,6 +10,24 @@ function run(input, output, opts) {
         });
 }
 
-it('remove :global selector', () => {
+it('remove :global - as a single selector', () => {
     return run(':global { a{ } }', 'a{ }', { });
+});
+
+it('remove :global - as part of selector', () => {
+    return run(
+        '.root :global .text { margin: 0 6px; }',
+        '.root .text { margin: 0 6px; }',
+        { });
+});
+
+it('remove :global - as part of selector with multiple spaces', () => {
+    return run(
+        '.root :global  .text { margin: 0 6px; }',
+        '.root .text { margin: 0 6px; }',
+        { });
+});
+
+it('remove :global - as part of @keyframe params', () => {
+    return run('@keyframes :global(zoomIn) { }', '@keyframes zoomIn { }', { });
 });
