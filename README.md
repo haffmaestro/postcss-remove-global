@@ -19,7 +19,7 @@
 a { }
 ```
 
-2. Remove :global as part of a selecotr
+2. Remove :global as part of a selector
 ```css
 .root :global .text { margin: 0 6px; }
 ```
