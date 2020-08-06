@@ -6,7 +6,7 @@
 [ci-img]:  https://travis-ci.org/princetoad/postcss-remove-global.svg
 [ci]:      https://travis-ci.org/princetoad/postcss-remove-global
 
-## Support three cases
+## Support four cases
 
 1. Remove :global as a single selector
 ```css
@@ -28,7 +28,16 @@ a { }
 .root .text { margin: 0 6px; }
 ```
 
-3. Remove :global as part of params of @keyframe
+3. Remove :global() as class modifier
+```css
+.root :global(.text) { margin: 0 6px; }
+```
+
+```css
+.root .text { margin: 0 6px; }
+```
+
+4. Remove :global as part of params of @keyframe
 ```css
 @keyframes :global(zoomIn) { }
 ```
