@@ -7,11 +7,15 @@ module.exports = postcss.plugin(pluginName, () => (root) => {
     root.walkRules(rule => {
         // :global as nested selector
         const globalReg = /:global(\s+)/;
+        const globalAsModifier = /:global\((\S+?)\)/g;
+
         if (rule.selector === ':global') {
             rule.parent.append(...rule.nodes);
             rule.remove();
         } else if (rule.selector.match(globalReg)) {
             rule.selector = rule.selector.replace(globalReg, '');
+        } else if (rule.selector.match(globalAsModifier)) {
+            rule.selector = rule.selector.replace(globalAsModifier, '$1');
         }
     });
     // :global in AtRules
